@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import About from './Pages/About';
+import LocalMap from './Pages/LocalMap';
+import RecipeCreator from './Pages/RecipeCreator';
+import {BrowserRouter as Router,
+  Link,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <p><Link to="/">Home</Link></p>
+        <p><Link to="/about">About</Link></p>
+        <p><Link to="/recipecreator">Recipe Creator</Link></p>
+        <p><Link to="/localmap">Local Farm Map</Link></p>
+
+        <Switch>
+          <Route path="/about">
+            <About/>
+          </Route>
+          <Route path="/recipecreator">
+            <RecipeCreator/>
+          </Route>
+          <Route path="/localmap">
+            <LocalMap/>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
