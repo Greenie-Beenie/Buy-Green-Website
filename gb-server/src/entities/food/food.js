@@ -1,7 +1,9 @@
-class Food {
-    constructor(id='', foodName='morsel', foodType='food', season=['summer', 'winter'], 
-    containsGluten=false, isSustainable=true, description='this is food', 
-    nutritionFacts={calories: 0, fat: 1.5, sugar: 0, carbohydrates: 0, protein: 2}) {
+import { foodDefault as fDef} from "./food-default";
+
+ export class Food {
+    constructor(id=fDef.id, foodName=fDef.foodName, foodType=fDef.foodType, season=fDef.season, 
+        containsGluten=fDef.containsGluten, isSustainable=fDef.isSustainable, description=fDef.description, 
+        nutritionFacts=fDef.nutritionFacts) {
         this.id = id;
         this.foodName = foodName;
         this.foodType = foodType;
@@ -34,6 +36,10 @@ class Food {
 
     getDescription = function() {
         return this.description;
+    }
+
+    getNutritionFacts = function() {
+        return this.nutritionFacts;
     }
 
     getFoodJSON = function() {
