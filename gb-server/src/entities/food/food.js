@@ -1,6 +1,6 @@
-import { foodDefault as fDef} from "./food-default";
+import fDef from "./food-default";
 
- export class Food {
+export class Food {
     constructor(id=fDef.id, foodName=fDef.foodName, foodType=fDef.foodType, season=fDef.season, 
         containsGluten=fDef.containsGluten, isSustainable=fDef.isSustainable, description=fDef.description, 
         nutritionFacts=fDef.nutritionFacts) {
@@ -32,6 +32,14 @@ import { foodDefault as fDef} from "./food-default";
 
     getEndSeason = function() {
         return this.season[1];
+    }
+
+    getContainsGluten = function() {
+        return this.containsGluten;
+    }
+
+    getIsSustainable = function() {
+        return this.getIsSustainable;
     }
 
     getDescription = function() {

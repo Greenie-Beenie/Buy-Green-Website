@@ -1,10 +1,14 @@
 import { CustomerProfile } from "../customer-profile/customer-profile"
-import { farmerDefault as fDef} from "./farmer-default";
+import fDef from "./farmer-default";
 
 export class FarmerProfile extends CustomerProfile {
     constructor(id=fDef.id, farms=fDef.farms) {
         this.id = id;
         this.farms = farms;
+    }
+
+    getFarms = function() {
+        return this.farms;
     }
 
     getFarmerProfileJSON = function() {

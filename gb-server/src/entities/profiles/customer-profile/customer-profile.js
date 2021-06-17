@@ -1,4 +1,4 @@
-import { customerDefault as cDef} from "./customer-default";
+import cDef from "./customer-default";
 
 export class CustomerProfile {
     constructor(id=cDef.id, firstName=cDef.firstName, lastName=cDef.lastName, dateOfBirth=cDef.dateOfBirth, 

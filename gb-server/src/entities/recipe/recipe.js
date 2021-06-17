@@ -1,9 +1,9 @@
-import { recipeDefault as rDef} from "./recipe-default";
+import rDef from "./recipe-default";
 
 export class Recipe {
-    constructor(id=rDef.title, title=rDef.title, season=rDef.season, ingredients=rDef.ingredients, 
+    constructor(id=rDef.id, title=rDef.title, season=rDef.season, ingredients=rDef.ingredients, 
         dietRestricts=rDef.dietRestricts, tags=rDef.tags, description=rDef.description, body=rDef.body, 
-        nutritionFacts=rDef.nutritionFacts, author=rDef.author, datePosted=rDef.datePosted) {
+        nutritionFacts=rDef.nutritionFacts, author=rDef.author) {
         this.id = id;
         this.title = title;
         this.season = season;
@@ -14,7 +14,7 @@ export class Recipe {
         this.body = body;
         this.nutritionFacts = nutritionFacts;
         this.author = author;
-        this.datePosted = new Date(datePosted);
+        this.datePosted = Date.now();
     }
 
     getId = function() {

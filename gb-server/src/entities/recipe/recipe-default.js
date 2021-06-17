@@ -1,7 +1,7 @@
 import { dietRestricts as dResDefault} from "../helpers/helper-objects";
 import { Food } from "../food/food";
 
-export const recipeDefault = {
+export default recipeDefault = {
     id: '',
     title: 'morsel soup',
     season: ['summer', 'winter'],

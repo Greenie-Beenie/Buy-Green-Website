@@ -1,8 +1,8 @@
-import { farmDefault as Fdef } from "./farm-default";
+import fDef from "./farm-default";
 
 export class Farm {
-    constructor(id=Fdef.id, farmName=Fdef.farmName, owners=Fdef.owners, crops=Fdef.crops, description=Fdef.description, 
-        sells=Fdef.sells, opens=Fdef.opens, closes=Fdef.closes, location=Fdef.location, url=Fdef.url) {
+    constructor(id=fDef.id, farmName=fDef.farmName, owners=fDef.owners, crops=fDef.crops, description=fDef.description, 
+        sells=fDef.sells, opens=fDef.opens, closes=fDef.closes, location=fDef.location, url=fDef.url) {
         this.id = id;
         this.farmName = farmName;
         this.owners = owners;

@@ -1,6 +1,6 @@
 import { Food } from "../food/food";
 
-export const farmDefault = {
+export default farmDefault = {
     id: '',
     farmName: 'Tegridy Farms',
     owners: ['Randy Marsh'],

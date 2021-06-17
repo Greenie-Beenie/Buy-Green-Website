@@ -1,4 +1,4 @@
-export const foodDefault = {
+export default foodDefault = {
     id: '',
     foodName: 'morsel', 
     foodType: 'food', 
