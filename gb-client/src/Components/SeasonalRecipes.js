@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     EuiTitle,
     EuiSpacer,
@@ -9,12 +9,28 @@ import {
 } from '@elastic/eui';
 import '@elastic/eui/dist/eui_theme_light.css';
 import { Link } from 'react-router-dom';
+import RecipePopup from './RecipePopup';
 
 function SeasonalRecipes () {
+    const [openRecipePopup, setOpenRecipePopup] = useState(false);
+
+    //Recipe Popup
+    const handleOpenRecipePopup = () => setOpenRecipePopup(true);
+    const handleCloseRecipePopup = () => setOpenRecipePopup(false);
+
+    let recipePopup;
+    if (openRecipePopup) {
+        recipePopup = (
+            <RecipePopup handleClose={handleCloseRecipePopup} />
+        );   
+    }
+
+    //Footer for the recipe cards
     const cardFooterContent = (
         <EuiFlexGroup justifyContent="flexEnd">
           <EuiFlexItem grow={false}>
-            <EuiButton>Eat it</EuiButton>
+            <EuiButton onClick={handleOpenRecipePopup}>Eat it</EuiButton>
+            {recipePopup}
           </EuiFlexItem>
         </EuiFlexGroup>
       );
@@ -73,6 +89,7 @@ function SeasonalRecipes () {
                 </EuiFlexItem>               
             </EuiFlexGroup>
             <EuiSpacer />
+            
 
             <Link to="/recipecreator">
                 <EuiButton
