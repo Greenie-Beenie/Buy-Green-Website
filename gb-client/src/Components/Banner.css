@@ -9,6 +9,13 @@
     align-items: center;
     border-bottom-right-radius: 10%;
     border-bottom-left-radius: 10%;
+    opacity: 95%;
+    transition-timing-function: ease-in;
+    transition: 0.6s;
+}
+
+.banner:hover{
+    opacity: 100%;
 }
 
 
@@ -18,5 +25,4 @@
     line-height: 1.6;
     text-indent: -40rem;
     font-size: 8rem;
-   
 }
