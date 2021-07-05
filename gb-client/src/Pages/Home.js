@@ -11,6 +11,7 @@ import {
     EuiButton,
     EuiText
 } from '@elastic/eui';
+import '@elastic/eui/dist/eui_theme_light.css';
 
 function Home() {
     return (
