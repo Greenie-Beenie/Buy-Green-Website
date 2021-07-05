@@ -15,7 +15,7 @@ import {
 function Home() {
     return (
         <div>
-            <Banner></Banner>
+            <Banner/>
             {/* Why Buy Local */}
             <EuiTitle size="m">
                 <h1>Why should I buy local produce? Our website brings...</h1>
