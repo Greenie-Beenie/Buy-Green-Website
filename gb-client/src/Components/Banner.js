@@ -12,7 +12,7 @@ const Banner = () => {
         <div className = "banner">
                 <EuiTitle  style={{ userSelect: "none" }} className = "nav-logo">
                     <h2>
-                        <EuiTextColor color="ghost">Greenie <br></br> Beenie</EuiTextColor>
+                        <EuiTextColor color="ghost">Greenie <br/> Beenie</EuiTextColor>
                     </h2>
                 </EuiTitle>
         </div>
