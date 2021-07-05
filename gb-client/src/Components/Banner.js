@@ -10,7 +10,7 @@ import {
 const Banner = () => {
     return (
         <div className = "banner">
-                <EuiTitle  style={{ userSelect: "none" }} className = "nav-logo">
+                <EuiTitle   size = 'xxl' className = "banner-text">
                     <h2>
                         <EuiTextColor color="ghost">Greenie <br/> Beenie</EuiTextColor>
                     </h2>
