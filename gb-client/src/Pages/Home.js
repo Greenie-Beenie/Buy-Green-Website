@@ -4,6 +4,7 @@ import AvatarList from '../Components/AvatarList';
 import avatars from '../data/WhyBuyLocalData';
 import { Link } from 'react-router-dom';
 import Map from '../Components/Map';
+import Banner from '../Components/Banner';
 import {
     EuiTitle,
     EuiSpacer,
@@ -14,6 +15,7 @@ import {
 function Home() {
     return (
         <div>
+            <Banner></Banner>
             {/* Why Buy Local */}
             <EuiTitle size="m">
                 <h1>Why should I buy local produce? Our website brings...</h1>

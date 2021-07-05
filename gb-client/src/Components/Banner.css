@@ -1,0 +1,20 @@
+.banner {
+    background-image: url('https://images.pexels.com/photos/235648/pexels-photo-235648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-position: center;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
+
+.nav-logo{
+    flex-grow: 1;
+    font-size: 9.5rem;
+    line-height: 1.5;
+    text-indent: -40rem;
+}
