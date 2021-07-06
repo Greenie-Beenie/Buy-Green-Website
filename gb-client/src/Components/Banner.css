@@ -1,7 +1,7 @@
 .banner {
     background-image: url('https://images.pexels.com/photos/235648/pexels-photo-235648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-position: center;
-    height: 500px;
+    height: 600px;
     width: 100%;
     display: flex;
     width: 100%;
@@ -12,6 +12,7 @@
     opacity: 95%;
     transition-timing-function: ease-in;
     transition: 0.6s;
+    margin-top: -40px
 }
 
 .banner:hover{
