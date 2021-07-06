@@ -3,37 +3,25 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import LocalMap from './Pages/LocalMap';
 import RecipeCreator from './Pages/RecipeCreator';
+import NavBar from './Components/NavBar'
 import {BrowserRouter as Router,
-  Link,
   Switch,
   Route
 } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <p><Link to="/home">Home</Link></p>
-        <p><Link to="/about">About</Link></p>
-        <p><Link to="/recipecreator">Recipe Creator</Link></p>
-        <p><Link to="/localmap">Local Farm Map</Link></p>
-
+    <Router>
+      <NavBar />
+      <div className="pages">
         <Switch>
-          <Route path="/home">
-            <Home/>
-          </Route>
-          <Route path="/about">
-            <About/>
-          </Route>
-          <Route path="/recipecreator">
-            <RecipeCreator/>
-          </Route>
-          <Route path="/localmap">
-            <LocalMap/>
-          </Route>
+          <Route path="/Home" component = {Home} />
+          <Route path ="/About" component = {About} />
+          <Route path ="/RecipeCreator" component = {RecipeCreator} />
+          <Route path ="/LocalMap" component = {LocalMap} />
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
