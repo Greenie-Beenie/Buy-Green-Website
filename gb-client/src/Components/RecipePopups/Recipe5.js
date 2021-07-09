@@ -75,7 +75,7 @@ function Recipe5 ({handleClose}) {
     ];
     return (
         <EuiOverlayMask>
-            <EuiModal onclose={handleClose}>
+            <EuiModal onClose={handleClose}>
                 <EuiModalHeader>
                     <EuiModalHeaderTitle>
                         <h1> Berry Shake </h1>
