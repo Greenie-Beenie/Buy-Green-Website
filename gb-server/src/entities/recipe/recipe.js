@@ -1,9 +1,20 @@
-import rDef from "./recipe-default";
+import buildMakeRecipeDefault from "./recipe-default";
+export default function buildMakeRecipe({ Id, makeFood, dResDefault }) {
+    const recDef = buildMakeRecipeDefault({Id, makeFood, dResDefault});
+    return function makeRecipe({
+        id=Id.makeId(), title=recDef.title, season=recDef.season, ingredients=recDef.ingredients, 
+        dietRestricts=recDef.dietRestricts, tags=recDef.tags, description=recDef.description, body=recDef.body, 
+        nutritionFacts=recDef.nutritionFacts, author=recDef.author, datePosted=Date.now()
+    }) {
+        return new Recipe({ id, title, season, ingredients, dietRestricts, 
+            tags, description, body, nutritionFacts, author, datePosted 
+        });
+    }
+}
 
-export class Recipe {
-    constructor(id=rDef.id, title=rDef.title, season=rDef.season, ingredients=rDef.ingredients, 
-        dietRestricts=rDef.dietRestricts, tags=rDef.tags, description=rDef.description, body=rDef.body, 
-        nutritionFacts=rDef.nutritionFacts, author=rDef.author) {
+class Recipe {
+    constructor({ id, title, season, ingredients, dietRestricts, 
+        tags, description, body, nutritionFacts, author, datePosted}) {
         this.id = id;
         this.title = title;
         this.season = season;
@@ -14,7 +25,7 @@ export class Recipe {
         this.body = body;
         this.nutritionFacts = nutritionFacts;
         this.author = author;
-        this.datePosted = Date.now();
+        this.datePosted = datePosted;
     }
 
     getId = function() {
@@ -25,12 +36,8 @@ export class Recipe {
         return this.title;
     }
 
-    getStartSeason = function() {
+    getSeason = function() {
         return this.season[0];
-    }
-
-    getEndSeason = function() {
-        return this.season[1];
     }
 
     getIngredients = function() {
@@ -65,19 +72,19 @@ export class Recipe {
         return this.datePosted;
     }
 
-    getRecipeJSON = function() {
+    getRecipeJSON = function(rec=this) {
         return {
-            id: this.id,
-            title: this.title,
-            season: this.season,
-            ingredients: this.ingredients,
-            dietRestricts: this.dietRestricts,
-            tags: this.tags,
-            description: this.description,
-            body: this.body,
-            nutritionFacts: this.nutritionFacts,
-            author: this.author,
-            datePosted: this.datePosted
+            id: rec.id,
+            title: rec.title,
+            season: rec.season,
+            ingredients: rec.ingredients,
+            dietRestricts: rec.dietRestricts,
+            tags: rec.tags,
+            description: rec.description,
+            body: rec.body,
+            nutritionFacts: rec.nutritionFacts,
+            author: rec.author,
+            datePosted: rec.datePosted
         }
     }
 }

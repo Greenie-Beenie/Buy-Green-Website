@@ -1,5 +1,3 @@
-export { dietRestricts, allergies};
-
 const dietRestricts = {
     beef: false, 
     vegetarian: false, 
@@ -25,3 +23,8 @@ const allergies = {
         default: false
     }
 }
+
+const helperObjects = Object.freeze({ dietRestricts, allergies });
+
+export default helperObjects;
+export { dietRestricts, allergies };

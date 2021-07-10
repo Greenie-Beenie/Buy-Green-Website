@@ -1,9 +1,20 @@
-import cDef from "./customer-default";
+import buildMakeCustomerDefault from "./customer-default";
+export default function buildMakeCustomerProfile({ Id, dResDefault, alDefault, makeRecipe }) {
+    const cusDef = buildMakeCustomerDefault({ Id, dResDefault, alDefault, makeRecipe});
+    return function makeCustomerProfile({
+        id=Id.makeId(), firstName=cusDef.firstName, lastName=cusDef.lastName, dateOfBirth=cusDef.dateOfBirth,
+        dietRestricts=cusDef.dietRestricts, allergies=cusDef.allergies, address=cusDef.address,
+        favourites=cusDef.favourites, myRecipes=cusDef.myRecipes
+    }) {
+        return new CustomerProfile({ id, firstName, lastName, dateOfBirth, 
+            dietRestricts, allergies, address, favourites, myRecipes 
+        });        
+    }
+}
 
 export class CustomerProfile {
-    constructor(id=cDef.id, firstName=cDef.firstName, lastName=cDef.lastName, dateOfBirth=cDef.dateOfBirth, 
-        dietRestricts=cDef.dietRestricts, allergies=cDef.allergies, address=cDef.address, favourites=cDef.favourites, 
-        myRecipes=cDef.myRecipes) {
+    constructor({ id, firstName, lastName, dateOfBirth, dietRestricts, 
+        allergies, address, favourites, myRecipes }) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

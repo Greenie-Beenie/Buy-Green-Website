@@ -1,9 +1,20 @@
-import fDef from "./food-default";
+import buildMakeFoodDefault from "./food-default";
+export default function buildMakeFood({ Id }) {
+    fooDef = buildMakeFoodDefault({ Id });
+    return function makeFood({
+        id=Id.makeId(), foodName=fooDef.foodName, foodType=fooDef.foodType, season=fooDef.season,
+        containsGluten=fooDef.containsGluten, isSustainable=fooDef.isSustainable, 
+        description=fooDef.description, nutritionFacts=fooDef.nutritionFacts
+    }) {
+        return new Food({ id, foodName, foodType, season, containsGluten, 
+            isSustainable, description, nutritionFacts 
+        });
+    }
+}
 
-export class Food {
-    constructor(id=fDef.id, foodName=fDef.foodName, foodType=fDef.foodType, season=fDef.season, 
-        containsGluten=fDef.containsGluten, isSustainable=fDef.isSustainable, description=fDef.description, 
-        nutritionFacts=fDef.nutritionFacts) {
+class Food {
+    constructor({ id, foodName, foodType, season, containsGluten, 
+        isSustainable, description, nutritionFacts }) {
         this.id = id;
         this.foodName = foodName;
         this.foodType = foodType;
@@ -24,14 +35,6 @@ export class Food {
 
     getFoodType = function() {
         return this.foodType;
-    }
-
-    getStartSeason = function() {
-        return this.season[0];
-    }
-
-    getEndSeason = function() {
-        return this.season[1];
     }
 
     getContainsGluten = function() {

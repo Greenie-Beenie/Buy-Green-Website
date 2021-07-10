@@ -1,8 +1,20 @@
-import fDef from "./farm-default";
+import buildMakefarmDefault from "./farm-default";
+export default function buildMakeFarm({ Id, makeFood}) {
+    const farmDef = buildMakefarmDefault({ Id, makeFood});
+    return function makeFarm({
+        id=Id.makeId(), farmName=farmDef.farmName, owners=farmDef.owners, crops=farmDef.crops, 
+        description=farmDef.description, sells=farmDef.sells, opens=farmDef.opens, 
+        closes = farmDef.closes, location=farmDef.location, url=farmDef.url
+    }) {
+        return new Farm({ id, farmName, owners, crops, description, 
+            sells, opens, closes, location, url
+        });
+    }   
+}
 
-export class Farm {
-    constructor(id=fDef.id, farmName=fDef.farmName, owners=fDef.owners, crops=fDef.crops, description=fDef.description, 
-        sells=fDef.sells, opens=fDef.opens, closes=fDef.closes, location=fDef.location, url=fDef.url) {
+class Farm {
+    constructor({ id, farmName, owners, crops, description, 
+        sells, opens, closes, location, url }) {
         this.id = id;
         this.farmName = farmName;
         this.owners = owners;
