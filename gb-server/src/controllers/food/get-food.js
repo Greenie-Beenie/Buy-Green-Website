@@ -1,16 +1,16 @@
 export default function makeGetFood({ listFood }) {
-    return async function getRecipes(httpRequest) {
+    return async function getFood(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         };
         try {
-            const recipe = await listFood({
+            const food = await listFood({
                 id: httpRequest.query.id
             });
             return {
                 headers,
                 statusCode: 200,
-                body: recipe
+                body: food
             };
         } catch (e) {
             const status = e.errorCode === undefined ? 500 : e.errorCode;

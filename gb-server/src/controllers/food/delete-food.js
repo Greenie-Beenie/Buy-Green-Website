@@ -1,10 +1,10 @@
-export default function makeDeleteRecipe({ deleteOneRecipe }) {
-    return async function deleteRecipe(httpRequest) {
+export default function makeDeleteFood({ deleteOneFood }) {
+    return async function deleteFood(httpRequest) {
         const headers = {
             'Content-Type': 'application/json'
         };
         try {
-            const deleteMessage = await deleteOneRecipe({
+            const deleteMessage = await deleteOneFood({
                 id: httpRequest.query.id
             });
             return {
