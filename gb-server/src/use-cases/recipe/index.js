@@ -1,10 +1,10 @@
 import { BadRequestError, NotFoundError, ConflictError } from "../../entities/helpers/custom-errors";
-import { listAllRecipes, findRecById, deleteRecById } from "../../data-access/public/recipes-db";
+import { recipeDb } from "../../data-access";
 import makeListRecipes from "./list-recipes";
 import makeDeleteOneRecipe from "./delete-one-recipe";
 
-const listRecipes = makeListRecipes({ listAllRecipes, findRecById, NotFoundError });
-const deleteOneRecipe = makeDeleteOneRecipe({ findRecById, deleteRecById, BadRequestError, NotFoundError});
+const listRecipes = makeListRecipes({ recipeDb, NotFoundError });
+const deleteOneRecipe = makeDeleteOneRecipe({ recipeDb, BadRequestError, NotFoundError});
 
 const recipeService = Object.freeze({
     listRecipes,

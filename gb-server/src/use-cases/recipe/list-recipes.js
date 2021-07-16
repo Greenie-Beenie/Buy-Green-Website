@@ -1,13 +1,13 @@
-export default function makeListRecipes({ listAllRecipes, findRecById, NotFoundError }) {
+export default function makeListRecipes({ recipeDb, NotFoundError }) {
     return async function listRecipes({ id } = {}) {
         let responseBody;
         if (!id) {
-            responseBody = await listAllRecipes();
+            responseBody = await recipeDb.listAllRecipes();
             if (responseBody === []) {
                 throw new NotFoundError("No recipes found.");
             }
         } else {
-            const rec = await findRecById({ id });
+            const rec = await recipeDb.findRecById({ id });
             if (rec) {
                 responseBody = rec;
             } else {
