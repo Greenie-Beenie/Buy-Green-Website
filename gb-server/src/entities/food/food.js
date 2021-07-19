@@ -2,10 +2,11 @@ import buildMakeFoodDefault from "./food-default";
 export default function buildMakeFood({ Id }) {
     fooDef = buildMakeFoodDefault({ Id });
     return function makeFood({
-        id=Id.makeId(), foodName=fooDef.foodName, foodType=fooDef.foodType, season=fooDef.season,
+        foodName=fooDef.foodName, foodType=fooDef.foodType, season=fooDef.season,
         containsGluten=fooDef.containsGluten, isSustainable=fooDef.isSustainable, 
         description=fooDef.description, nutritionFacts=fooDef.nutritionFacts
     }) {
+        const id = Id.makeId();
         return new Food({ id, foodName, foodType, season, containsGluten, 
             isSustainable, description, nutritionFacts 
         });

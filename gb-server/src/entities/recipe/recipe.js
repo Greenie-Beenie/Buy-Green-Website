@@ -2,19 +2,20 @@ import buildMakeRecipeDefault from "./recipe-default";
 export default function buildMakeRecipe({ Id, makeFood, dResDefault }) {
     const recDef = buildMakeRecipeDefault({Id, makeFood, dResDefault});
     return function makeRecipe({
-        id=Id.makeId(), title=recDef.title, season=recDef.season, ingredients=recDef.ingredients, 
-        dietRestricts=recDef.dietRestricts, tags=recDef.tags, description=recDef.description, body=recDef.body, 
-        nutritionFacts=recDef.nutritionFacts, author=recDef.author, datePosted=Date.now()
+        title=recDef.title, season=recDef.season, ingredients=recDef.ingredients, 
+        dietRestricts=recDef.dietRestricts, tags=recDef.tags, description=recDef.description, 
+        body=recDef.body, nutritionFacts=recDef.nutritionFacts, author=recDef.author
     }) {
+        const id = Id.makeId();
         return new Recipe({ id, title, season, ingredients, dietRestricts, 
-            tags, description, body, nutritionFacts, author, datePosted 
+            tags, description, body, nutritionFacts, author
         });
     }
 }
 
 class Recipe {
     constructor({ id, title, season, ingredients, dietRestricts, 
-        tags, description, body, nutritionFacts, author, datePosted}) {
+        tags, description, body, nutritionFacts, author }) {
         this.id = id;
         this.title = title;
         this.season = season;
@@ -25,7 +26,7 @@ class Recipe {
         this.body = body;
         this.nutritionFacts = nutritionFacts;
         this.author = author;
-        this.datePosted = datePosted;
+        this.datePosted = Date.now();
     }
 
     getId = function() {

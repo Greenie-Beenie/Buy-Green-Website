@@ -2,6 +2,7 @@ export default function makeFoodDb ({ Id, foodCol }) {
     return Object.freeze({
         listAllFood,
         findFoodById,
+        addFood,
         deleteFoodById
     });
     async function listAllFood() {
@@ -18,6 +19,10 @@ export default function makeFoodDb ({ Id, foodCol }) {
         }
         snapshot.forEach(f => {food = f});
         return food;
+    }
+    async function addFood(foodData) {
+        await foodCol.add(foodData);
+        return foodData;
     }
     async function deleteFoodById({ id }) {
         const snapshot = snapshotFoodById({ id });

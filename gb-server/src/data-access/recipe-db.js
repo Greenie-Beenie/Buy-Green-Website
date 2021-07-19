@@ -2,6 +2,7 @@ export default function makeRecipeDb({ Id, recCol }) {
     return Object.freeze({
         listAllRecipes,
         findRecById,
+        addRec,
         deleteRecById  
     });
     async function listAllRecipes() {
@@ -18,6 +19,10 @@ export default function makeRecipeDb({ Id, recCol }) {
         }
         snapshot.forEach(rec => {recipe = rec});
         return recipe;
+    }
+    async function addRec(RecData) {
+        await RecCol.add(RecData);
+        return RecData;
     }
     async function deleteRecById({ id }) {
         const snapshot = snapshotRecById({ id });
