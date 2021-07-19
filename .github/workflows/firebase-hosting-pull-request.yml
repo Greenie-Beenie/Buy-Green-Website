@@ -14,3 +14,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GREENIEBEENIE_604C1 }}'
           projectId: greeniebeenie-604c1
+          entryPoint: './gb-server/firebase'
