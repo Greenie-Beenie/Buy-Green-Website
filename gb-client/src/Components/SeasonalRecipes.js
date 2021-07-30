@@ -8,175 +8,156 @@ import {
     EuiFlexItem,
 } from '@elastic/eui';
 import { Link } from 'react-router-dom';
-import Recipe1 from './RecipePopups/Recipe1';
-import Recipe2 from './RecipePopups/Recipe2';
-import Recipe3 from './RecipePopups/Recipe3';
-import Recipe4 from './RecipePopups/Recipe4';
-import Recipe5 from './RecipePopups/Recipe5';
+import RecipePopup from './RecipePopup';
+import recipe1Data from '../data/Recipe1Data';
+import recipe2Data from '../data/Recipe2Data';
+import recipe3Data from '../data/Recipe3Data';
+import recipe4Data from '../data/Recipe4Data';
+import recipe5Data from '../data/Recipe5Data';
 
 function SeasonalRecipes () {
-    const [openRecipe1, setOpenRecipe1] = useState(false);
-    const [openRecipe2, setOpenRecipe2] = useState(false);
-    const [openRecipe3, setOpenRecipe3] = useState(false);
-    const [openRecipe4, setOpenRecipe4] = useState(false);
-    const [openRecipe5, setOpenRecipe5] = useState(false);
+  const [openRecipe1, setOpenRecipe1] = useState(false);
+  const [openRecipe2, setOpenRecipe2] = useState(false);
+  const [openRecipe3, setOpenRecipe3] = useState(false);
+  const [openRecipe4, setOpenRecipe4] = useState(false);
+  const [openRecipe5, setOpenRecipe5] = useState(false);
 
-    //Recipe Popup
-    const handleOpenRecipe1 = () => setOpenRecipe1(true);
-    const handleCloseRecipe1 = () => setOpenRecipe1(false);
+  //open and close popup
+  const handleOpenRecipe1 = () => setOpenRecipe1(true);
+  const handleCloseRecipe1 = () => setOpenRecipe1(false);
+  
 
-    const handleOpenRecipe2 = () => setOpenRecipe2(true);
-    const handleCloseRecipe2 = () => setOpenRecipe2(false);
+  const handleOpenRecipe2 = () => setOpenRecipe2(true);
+  const handleCloseRecipe2 = () => setOpenRecipe2(false);
 
-    const handleOpenRecipe3 = () => setOpenRecipe3(true);
-    const handleCloseRecipe3 = () => setOpenRecipe3(false);
+  const handleOpenRecipe3 = () => setOpenRecipe3(true);
+  const handleCloseRecipe3 = () => setOpenRecipe3(false);
 
-    const handleOpenRecipe4 = () => setOpenRecipe4(true);
-    const handleCloseRecipe4 = () => setOpenRecipe4(false);
+  const handleOpenRecipe4 = () => setOpenRecipe4(true);
+  const handleCloseRecipe4 = () => setOpenRecipe4(false);
 
-    const handleOpenRecipe5 = () => setOpenRecipe5(true);
-    const handleCloseRecipe5 = () => setOpenRecipe5(false);
+  const handleOpenRecipe5 = () => setOpenRecipe5(true);
+  const handleCloseRecipe5 = () => setOpenRecipe5(false);
+  
 
-    let recipePopup1;
-    if (openRecipe1) {
-        recipePopup1 = (
-            <Recipe1 handleClose={handleCloseRecipe1} openRecipe1 = {openRecipe1} openRecipe2 = {openRecipe2} openRecipe3 = {openRecipe3} openRecipe4 = {openRecipe4} openRecipe5 = {openRecipe5} />
-        );   
-    }
-    let recipePopup2;
-    if (openRecipe2) {
-        recipePopup2 = (
-            <Recipe2 handleClose={handleCloseRecipe2} />
-        );   
-    }
-    let recipePopup3;
-    if (openRecipe3) {
-        recipePopup3 = (
-            <Recipe3 handleClose={handleCloseRecipe3} />
-        );   
-    }
-    let recipePopup4;
-    if (openRecipe4) {
-        recipePopup4 = (
-            <Recipe4 handleClose={handleCloseRecipe4} />
-        );   
-    }
-    let recipePopup5;
-    if (openRecipe5) {
-        recipePopup5 = (
-            <Recipe5 handleClose={handleCloseRecipe5} />
-        );   
-    }
+  //call RecipePopup with data
+  let recipePopup1;
+  if (openRecipe1) {
+    recipePopup1 = (
+      <RecipePopup handleClose = {handleCloseRecipe1}
+        recipeData = {recipe1Data}
+        />
+    );   
+  }
 
-    //Footer for the recipe cards
-    const cardFooterContent1 = (
-        <EuiFlexGroup justifyContent="flexEnd">
-          <EuiFlexItem grow={false}>
-            <EuiButton onClick={handleOpenRecipe1}>Eat it</EuiButton>
-            {recipePopup1}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      );
-      const cardFooterContent2 = (
-        <EuiFlexGroup justifyContent="flexEnd">
-          <EuiFlexItem grow={false}>
-            <EuiButton onClick={handleOpenRecipe2}>Eat it</EuiButton>
-            {recipePopup2}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      );
-      const cardFooterContent3 = (
-        <EuiFlexGroup justifyContent="flexEnd">
-          <EuiFlexItem grow={false}>
-            <EuiButton onClick={handleOpenRecipe3}>Eat it</EuiButton>
-            {recipePopup3}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      );
-      const cardFooterContent4 = (
-        <EuiFlexGroup justifyContent="flexEnd">
-          <EuiFlexItem grow={false}>
-            <EuiButton onClick={handleOpenRecipe4}>Eat it</EuiButton>
-            {recipePopup4}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      );
-      const cardFooterContent5 = (
-        <EuiFlexGroup justifyContent="flexEnd">
-          <EuiFlexItem grow={false}>
-            <EuiButton onClick={handleOpenRecipe5}>Eat it</EuiButton>
-            {recipePopup5}
-          </EuiFlexItem>
-        </EuiFlexGroup>
-      );
+  let recipePopup2;
+  if (openRecipe2) {
+    recipePopup2 = (
+      <RecipePopup handleClose={handleCloseRecipe2}
+      recipeData = {recipe2Data} 
+      />
+    );   
+  }
 
-    return (
-        <div>
-            <EuiTitle size="m">
-                <h1>Seasonal Recipes</h1>
-            </EuiTitle>
-            <EuiSpacer/>
-            <EuiFlexGroup gutterSize="l">
-                <EuiFlexItem>
-                    <EuiCard
-                        textAlign="left"
-                        image="https://www.graceandgoodeats.com/wp-content/uploads/2020/05/Italian-pasta-salad-5.jpg"
-                        title="Pasta Salad"
-                        description="can be an appetizer, side dish, or the main course"
-                        footer={cardFooterContent1}
-                    />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                    <EuiCard
-                        textAlign="left"
-                        image="https://mapleleafhh.com/wp-content/uploads/Broiled-Beef-Burger-e1556647638183.jpg"
-                        title="Hamburger"
-                        description="the term hamburger was derived from Hamburg, a city in Germany"
-                        footer={cardFooterContent2}
-                    />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                    <EuiCard
-                        textAlign="left"
-                        image="https://www.aboutamom.com/wp-content/uploads/2017/01/Oatmeal2.png"
-                        title="Oats and Fruits"
-                        description="oatmeal with fruits"
-                        footer={cardFooterContent3}
-                    />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                    <EuiCard
-                        textAlign="left"
-                        image="https://i1.wp.com/smittenkitchen.com/wp-content/uploads//2019/10/chicken-tikka-masala.jpg?fit=750%2C500&ssl=1"
-                        title="Chicken Curry"
-                        description="originates from the Indian subcontinent; tastes good with rice"
-                        footer={cardFooterContent4}
-                    />
-                </EuiFlexItem>
-                <EuiFlexItem>
-                    <EuiCard
-                        textAlign="left"
-                        image="http://irepo.primecp.com/2015/04/216765/Mixed-Fruit-Smoothie-5134_ExtraLarge1000_ID-951561.jpg?v=951561"
-                        title="Fruit Smoothie"
-                        description="a healthy drink composed of fruits"
-                        footer={cardFooterContent5}
-                    />
-                </EuiFlexItem>               
-            </EuiFlexGroup>
-            <EuiSpacer />
-            
+  let recipePopup3;
+  if (openRecipe3) {
+    recipePopup3 = (
+      <RecipePopup handleClose={handleCloseRecipe3}
+        recipeData = {recipe3Data} 
+      />
+    );      
+  }
 
-            <Link to="/recipecreator">
-                <EuiButton
-                    iconSide="right"
-                    fill
-                    iconType="discoverApp">
-                    See More
-                </EuiButton>
-            </Link>
-         </div>
-    )
+  let recipePopup4;
+  if (openRecipe4) {
+    recipePopup4 = (
+      <RecipePopup handleClose={handleCloseRecipe4} 
+        recipeData = {recipe4Data}
+      />
+    );        
+  }
+
+  let recipePopup5;
+  if (openRecipe5) {
+    recipePopup5 = (
+      <RecipePopup handleClose={handleCloseRecipe5}
+        recipeData = {recipe5Data} 
+      />
+    );  
+  }
+
+  return (
+      <div>
+          <EuiTitle size="m">
+              <h1>Seasonal Recipes</h1>
+          </EuiTitle>
+          <EuiSpacer/>
+          <EuiFlexGroup gutterSize="l">
+              <EuiFlexItem>
+                  <EuiCard
+                      textAlign="left"
+                      image={recipe1Data.image}
+                      title={recipe1Data.title}
+                      description={recipe1Data.description}
+                      onClick={handleOpenRecipe1}
+                  />
+                  {recipePopup1}
+              </EuiFlexItem>
+              <EuiFlexItem>
+                  <EuiCard
+                      textAlign="left"
+                      image={recipe2Data.image}
+                      title={recipe2Data.title}
+                      description={recipe2Data.description}
+                      onClick={handleOpenRecipe2}
+                  />
+                  {recipePopup2}
+              </EuiFlexItem>
+              <EuiFlexItem>
+                  <EuiCard
+                      textAlign="left"
+                      image={recipe3Data.image}
+                      title={recipe3Data.title}
+                      description={recipe3Data.description}
+                      onClick={handleOpenRecipe3}
+                  />
+                  {recipePopup3}
+              </EuiFlexItem>
+              <EuiFlexItem>
+                  <EuiCard
+                      textAlign="left"
+                      image={recipe4Data.image}
+                      title={recipe4Data.title}
+                      description={recipe4Data.description}
+                      onClick={handleOpenRecipe4}
+                  />
+                  {recipePopup4}
+              </EuiFlexItem>
+              <EuiFlexItem>
+                  <EuiCard
+                      textAlign="left"
+                      image={recipe5Data.image}
+                      title={recipe5Data.title}
+                      description={recipe5Data.description}
+                      onClick={handleOpenRecipe5}
+                  />
+                  {recipePopup5}
+              </EuiFlexItem>               
+          </EuiFlexGroup>
+          <EuiSpacer />
+          
+
+          <Link to="/recipecreator">
+              <EuiButton
+                  iconSide="right"
+                  fill
+                  iconType="discoverApp">
+                  See More
+              </EuiButton>
+          </Link>
+        </div>
+  )
 }
 
 export default SeasonalRecipes
-      
+    
