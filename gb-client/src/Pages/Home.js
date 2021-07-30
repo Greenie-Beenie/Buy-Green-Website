@@ -18,23 +18,18 @@ function Home() {
         <div>
             <Banner/>
             {/* Why Buy Local */}
-            <EuiTitle size="m">
-                <h1>Why should I buy local produce? Our website brings...</h1>
-            </EuiTitle>
+            <EuiSpacer size="xl"/>
+            <EuiTitle size="m"><h1>Why should you buy local produce?</h1></EuiTitle>
             <EuiSpacer size="xl"/>
             <AvatarList avatars={avatars}/>
             <EuiText style={{marginLeft:"5em", marginRight:"5em", marginTop:"2em"}} textAlign="center">
                 <p>
-                    My pet rock of 14 years died of old age a few hours ago and my family is making fun of me.
-                    Her name was Rookie and she was a small crested rock. I really loved her a lot, for such a small thing she had so much personality. 
-                    She would always walk onto my hand if I held it out for her and would jump to the cage door if I was home from work.
-                    For the last week she had been sluggish and not climbing at all. She stopped visiting me when I came home and
+                    When you buy food locally, you benefit your community, your environment, and yourself. Enjoy tastier and healthier produce while 
+                    living in the satisfaction of the benefits you've made for your environment and local economy, and the community connections you've made with
+                    your neighbourhood farmers. Supermarket produce is often artificially ripened and tasteless in comparison to fresh local food. Why wait?
                 </p>
             </EuiText>
-            <EuiButton iconType="documentation">
-                <Link to="/about">Learn More</Link>
-            </EuiButton>
-
+            <EuiButton iconType="documentation" href="/about"> Learn More </EuiButton>
 
             {/* Seasonal Components */}
             <EuiSpacer size="xl"/>
