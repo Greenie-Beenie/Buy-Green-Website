@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes, { string } from 'prop-types';
 import {
     EuiBadge,
     EuiButton,
@@ -17,83 +18,50 @@ import {
     EuiTitle,
 } from '@elastic/eui';
 
-function Recipe1 ({handleClose}) {
-    const restrictions = [
-        { 
-            restriction: 'Gluten',
-            colour: '#bada55',
-        },
-        {
-            restriction: 'Wheat',
-            colour: '#e64386',
-        },
-        {
-            restriction: 'Vegan',
-            colour: '#c087f5',
-        },
-    ];
-    const nutrition = [
-        {
-            Name: 'Calories',
-            Num: '300kcal',
-        },
-        {
-            Name: 'Protein',
-            Num: '10g',
-        },
-        {
-            Name: 'Carbs',
-            Num: '80g',
-        },
-        {
-            Name: 'Fibre',
-            Num: '9g',
-        },
-        {
-            Name: 'Fat',
-            Num: '7g',
-        },
-    ];
-    const ingredients = [
-        'avacado',
-        'red chilli',
-        'red onion',
-        'tomato',
-        'pasta',
-    ]
-
-    const recipeSteps = [
-        {
-            title: 'Cook Pasta',
-            children: (
-                <EuiText>
-                    <div style = {{width: '300px'}}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae felis eu leo venenatis congue interdum eu justo. Aliquam scelerisque ex nisl, a vulputate orci consequat in. Aenean dapibus varius nunc ac porttitor. Proin iaculis varius nisi, eget dignissim felis. Sed et felis eros.</p>
-                    </div>
-                </EuiText>
-            ),
-        },
-        {
-            title: 'Chop and Mix',
-            children: (
-                <EuiText>
-                    <div style = {{width: '300px'}}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae felis eu leo venenatis congue interdum eu justo. Aliquam scelerisque ex nisl, a vulputate orci consequat in. Aenean dapibus varius nunc ac porttitor. Proin iaculis varius nisi, eget dignissim felis. Sed et felis eros.</p>
-                    </div>
-                </EuiText>
-            ),
-        },
-    ];
+function RecipePopup (props) {
+    const title = props.recipeData.title;
+    const name = props.recipeData.name;
+    const date = props.recipeData.date;
+    const restrictions = props.recipeData.restrictions;
+    const colours = {
+        'Gluten': '#bada55',
+        'Wheat': '#e64386',
+        'Vegan': '#c087f5',
+        'Dairy': '#0cbff0',
+        'Meat': '#f2353f',
+        'Kosher': '#ffea47',
+        'Halal': '#239925',
+        'Nuts': '#f0910c',
+    }
+    let nutrition = [];
+    for (var key in props.recipeData.nutrition){
+        nutrition.push({Name: key, Num: props.recipeData.nutrition[key]}
+        )
+    }
+    const ingredients = props.recipeData.ingredients;
+    let recipeSteps = [];
+    for (var key in props.recipeData.steps){
+        recipeSteps.push({title: key, children: 
+            (
+            <EuiText>
+                <div style = {{width: '300px'}}>
+                    <p>{props.recipeData.steps[key]}</p>
+                </div>
+            </EuiText>
+            )}
+        )
+    }
     return (
+        <div>
         <EuiOverlayMask>
-            <EuiModal onClose={handleClose}>
+            <EuiModal onClose={props.handleClose}>
                 <EuiModalHeader>
                     <EuiModalHeaderTitle>
-                        <h1> Pasta Salad </h1>
+                        <h1>{title}</h1>
                         <EuiText textAlign = 'left' size = 's'>
-                            Author name
+                            {name}
                             <EuiSpacer size = 'xs'/>
-                            June 18 2021
+                            {date}
                         </EuiText>
                     </EuiModalHeaderTitle>
                 </EuiModalHeader>
@@ -101,7 +69,7 @@ function Recipe1 ({handleClose}) {
                     <EuiFlexGroup wrap responsive = {false} gutterSize = 'xs' style = {{maxWidth: '300px'}}>
                         {restrictions.map((restriction) => (
                             <EuiFlexItem grow = {false} key = {restriction}>
-                                <EuiBadge color = {restriction.colour}>{restriction.restriction}</EuiBadge>
+                                <EuiBadge color = {colours[restriction]}>{restriction}</EuiBadge>
                             </EuiFlexItem>
                         ))}
                     </EuiFlexGroup>
@@ -137,13 +105,29 @@ function Recipe1 ({handleClose}) {
                     </EuiText>  
                 </EuiModalBody>
                 <EuiModalFooter>
-                    <EuiButton onClick={handleClose} fill>
-                        Close
-                    </EuiButton>
+                    <EuiButton onClick={props.handleClose} fill>Close</EuiButton>
                 </EuiModalFooter>
             </EuiModal>
         </EuiOverlayMask>
+        </div>
     )
 }
+RecipePopup.propTypes = {
+    handleClose: PropTypes.func,
+    recipeData: PropTypes.shape({
+        title: PropTypes.string,
+        name: PropTypes.string,
+        date: PropTypes.string,
+        restrictions: PropTypes.arrayOf(string),
+        nutrition: PropTypes.shape({
+            x: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))
+        }),
+        ingredients: PropTypes.arrayOf(string),
+        steps: PropTypes.shape({
+            x: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string))
+        })
 
-export default Recipe1;
+    })
+}
+
+export default RecipePopup;
